@@ -5,8 +5,7 @@
 #include <vector>
 
 class Tree {
-  private:
-
+ private:
   struct Node {
     char value;
     std::vector<Node*> ListOfChild = {};
@@ -16,24 +15,25 @@ class Tree {
   void MakeTree(Node* _root, std::vector<char> symbols, int index = -1) {
     if (index != -1)
       symbols.erase(symbols.begin() + index);
-    if (!symbols.empty())
+    if (!symbols.empty()) {
       for (int i = 0; i < symbols.size(); i++) {
         _root->ListOfChild.push_back(new Node);
         _root->ListOfChild[i]->value = symbols[i];
         MakeTree(_root->ListOfChild[i], symbols, i);
       }
+    }
   }
   void Perms(Node* _root, std::vector<char> variables = {}) {
     if (_root->value != '*')
       variables.push_back(_root->value);
-    if (_root->ListOfChild.size() == 0)
+    if (_root->ListOfChild.size() == 0) {
       variants.push_back(variables);
-    else
+    } else {
       for (int i = 0; i < _root->ListOfChild.size(); i++)
         Perms(_root->ListOfChild[i], variables);
+    }
   }
-
-  public:
+ public:
   Tree(std::vector<char> symbols) {
     root = new Node;
     root->value = '*';
