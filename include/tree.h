@@ -33,7 +33,7 @@ class Tree {
         Perms(_root->ListOfChild[i], variables);
     }
   }
- 
+
  public:
   explicit Tree(std::vector<char> symbols) {
     root = new Node;
