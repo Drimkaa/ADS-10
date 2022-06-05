@@ -33,8 +33,9 @@ class Tree {
         Perms(_root->ListOfChild[i], variables);
     }
   }
+ 
  public:
-  Tree(std::vector<char> symbols) {
+  explicit Tree(std::vector<char> symbols) {
     root = new Node;
     root->value = '*';
     MakeTree(root, symbols);
